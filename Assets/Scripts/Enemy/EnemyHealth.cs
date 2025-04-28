@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class EnemyHealth : Enemy
+public class EnemyHealth : MonoBehaviour
 {
+    /*
     [SerializeField] private float maxHealth = 100f;
 
     private void Awake()
@@ -17,5 +18,5 @@ public class EnemyHealth : Enemy
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 }

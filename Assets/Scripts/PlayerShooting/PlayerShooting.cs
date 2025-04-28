@@ -27,18 +27,19 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot()
     {
+        // Луч из курсора
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        Plane plane = new Plane(Vector3.up, firePoint.position);
+
+        // Пересекаем луч с горизонтальной плоскостью на уровне игрока
+        if (plane.Raycast(ray, out float distance))
         {
-            Vector3 targetPosition = hit.point;
-            targetPosition.y = firePoint.position.y;
+            Vector3 targetPoint = ray.GetPoint(distance);
+            Vector3 direction = (targetPoint - firePoint.position).normalized;
 
-            Vector3 direction = (targetPosition - firePoint.position).normalized;
             Quaternion rotation = Quaternion.LookRotation(direction);
-
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rotation);
             bullet.GetComponent<Bullet>().Initialize(_stats.Damage, _stats.BulletRange);
         }
     }
-
 }

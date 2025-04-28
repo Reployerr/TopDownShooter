@@ -26,10 +26,19 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       /* if (other.TryGetComponent<Enemy>(out Enemy enemy))
+        if (other.CompareTag("Enemy"))
         {
-            enemy.TakeDamage(_damage);
+            if (other.TryGetComponent<Enemy>(out Enemy enemy))
+            {
+                enemy.TakeDamage(_damage);
+            }
+            Destroy(gameObject); 
+        }
+        else if (other.CompareTag("Env"))
+        {
+            Debug.Log("env touched");
             Destroy(gameObject);
-        }*/
+        }
     }
+
 }

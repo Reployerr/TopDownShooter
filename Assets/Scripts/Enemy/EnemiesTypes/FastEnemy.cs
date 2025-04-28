@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BasicEnemy : Enemy
+public class FastEnemy : Enemy
 {
+
     [SerializeField] private EnemyPool enemyPool;
     [SerializeField] private EnemyType enemyType = EnemyType.Basic;
 
